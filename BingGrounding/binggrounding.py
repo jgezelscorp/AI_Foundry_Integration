@@ -5,7 +5,7 @@ from azure.ai.agents.models import BingGroundingTool
 
 # Create an Azure AI Client from an endpoint, copied from your Azure AI Foundry project.
 # You need to login to Azure subscription via Azure CLI and set the environment variables
-project_endpoint = "https://jgeazureaiservice.services.ai.azure.com/api/projects/jgeazureaiservice-project"  # Ensure the PROJECT_ENDPOINT environment variable is set
+project_endpoint = ""  # Ensure the PROJECT_ENDPOINT environment variable is set
 
 # Create an AIProjectClient instance
 project_client = AIProjectClient(
@@ -13,7 +13,7 @@ project_client = AIProjectClient(
     credential=DefaultAzureCredential()  # Use Azure Default Credential for authentication
 )
 
-conn_id = "/subscriptions/306af555-a7da-440e-9b89-31b913b02384/resourceGroups/rg_azure_ai_studio/providers/Microsoft.CognitiveServices/accounts/jgeazureaiservice/projects/jgeazureaiservice-project/connections/jgedemobingsearch"  # Ensure the BING_CONNECTION_NAME environment variable is set
+conn_id = ""  # Ensure the BING_CONNECTION_NAME environment variable is set
 
 # Initialize the Bing Grounding tool
 bing = BingGroundingTool(connection_id=conn_id)
@@ -76,5 +76,5 @@ with project_client:
                     print(f"    Function name: {function_details.get('name')}")
         print()  # add an extra newline between steps
 
-    #project_client.agents.delete_agent(agent.id)
-    #print("Deleted agent")
+    project_client.agents.delete_agent(agent.id)
+    print("Deleted agent")
